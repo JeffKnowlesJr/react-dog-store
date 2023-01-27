@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "Toys",
+    "imageURL": "./480x320.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Treats",
+    "imageURL": "./480x321.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Leashes",
+    "imageURL": "./480x322.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Collars",
+    "imageURL": "./800x490.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Beds",
+    "imageURL": "./800x491.jpg"
+  }
+]
