@@ -1,0 +1,33 @@
+.navigation {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  &-logo {
+    width: 75px;
+    height: 75px;
+  }
+
+  &-logo__container {
+    height: 100%;
+    width: 75px;
+    display: flex;
+  }
+
+  &__container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .navigation__link {
+      padding: 10px 15px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+  }
+}
