@@ -53,15 +53,13 @@
     opacity: 0.7;
     position: absolute;
 
-    h3 {
-      font-weight: bold;
+    .category__title {
       margin: 0 6px 0;
       font-size: 22px;
       color: #4a4a4a;
     }
 
-    p {
-      font-weight: lighter;
+    .category__cta {
       font-size: 16px;
     }
   }
