@@ -7,6 +7,7 @@ import {
   getAuth,
   signInWithRedirect,
   signInWithPopup,
+  signInWithEmailAndPassword,
   GoogleAuthProvider,
   createUserWithEmailAndPassword
 } from 'firebase/auth'
@@ -24,7 +25,12 @@ provider.setCustomParameters({ prompt: 'select_account' })
 export const auth = getAuth()
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
 // export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider)
+export const signInWithGoogleEmailAndPassword = (email, password) => {
+  const response = signInWithEmailAndPassword(auth, email, password)
+  console.log(response)
+}
 
+// (alias) function signInWithEmailAndPassword(auth: Auth, email: string, password: string): Promise<UserCredential>
 export const db = getFirestore()
 
 export const createUserDocumentFromAuth = async (userAuth, userInfo) => {
