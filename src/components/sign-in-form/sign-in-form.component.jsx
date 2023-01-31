@@ -24,10 +24,11 @@ const SignInForm = () => {
   }
 
   const signInWithGoogle = async () => {
-    console.log('Signing in with Google')
-    const { user } = await signInWithGooglePopup()
-    await createUserDocumentFromAuth(user)
-    console.log(`user \n ${user}`)
+    console.log('signing in with Google')
+    // const { user } = await signInWithGooglePopup()
+    // await createUserDocumentFromAuth(user)
+    // console.log('Signing in with Google')
+    // console.log(`user \n ${user}`)
   }
 
   const handleSubmit = async (e) => {
