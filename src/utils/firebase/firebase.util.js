@@ -5,7 +5,6 @@ import firebaseConfig from '../../config/firebase-config.json'
 import { initializeApp } from 'firebase/app'
 import {
   getAuth,
-  signInWithRedirect,
   signInWithPopup,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
@@ -16,7 +15,7 @@ import {
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
 
 // Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig)
+initializeApp(firebaseConfig)
 
 const provider = new GoogleAuthProvider()
 
@@ -24,13 +23,7 @@ provider.setCustomParameters({ prompt: 'select_account' })
 
 export const auth = getAuth()
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
-// export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider)
-export const signInWithGoogleEmailAndPassword = (email, password) => {
-  const response = signInWithEmailAndPassword(auth, email, password)
-  console.log(response)
-}
 
-// (alias) function signInWithEmailAndPassword(auth: Auth, email: string, password: string): Promise<UserCredential>
 export const db = getFirestore()
 
 export const createUserDocumentFromAuth = async (userAuth, userInfo) => {
@@ -58,4 +51,9 @@ export const createUserDocumentFromAuth = async (userAuth, userInfo) => {
 export const createAuthUserWithEmailandPassword = async (email, password) => {
   if (!email || !password) return
   return await createUserWithEmailAndPassword(auth, email, password)
+}
+
+export const signInAuthUserWithEmailandPassword = async (email, password) => {
+  if (!email || !password) return
+  return await signInWithEmailAndPassword(auth, email, password)
 }
