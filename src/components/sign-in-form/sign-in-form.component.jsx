@@ -41,7 +41,18 @@ const SignInForm = () => {
       console.log(`response: \n ${response}`)
       resetFormFields()
     } catch (error) {
-      console.log('Error in user sigin \n', error)
+      switch (error.code) {
+        case 'auth/wrong-password':
+          alert('Invalid email password combination')
+          break // will stop checking cases after
+        case 'auth/user-not-found':
+          alert('There is no user with that email')
+          break
+        default:
+          alert('Unable to sign in')
+          console.log(error)
+          break
+      }
     }
   }
 
