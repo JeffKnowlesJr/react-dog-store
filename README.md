@@ -64,9 +64,18 @@ The React Dog Store
 
 - formInput function destructures props label and spreads other props
 - returns jsx of form input including functionality and interactivity
-- how does it pass data back up, simply by the props?
--
+- how does it pass data back up, simply by the value prop
+
+### User Context
+
+- Firebase's OnAuthStateChange returns us back an observable listener
+- In order to use OASC we're going to mount it on component mount with useEffect
+- onAuthStateChange will call our callback function whenever the state of the auth singleton changes
 
 ### Misc
 
 - REPHRASE: style sheets are imported 'localy'
+
+## Vocabulary
+
+- [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern)
