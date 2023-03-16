@@ -32,12 +32,25 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
   )
 }
 
+const deleteCheckoutItem = (cartItems, checkoutItemToDelete) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === checkoutItemToDelete.id
+  )
+
+  if (existingCartItem) {
+    return cartItems.filter(
+      (cartItem) => cartItem.id !== checkoutItemToDelete.id
+    )
+  }
+}
+
 export const CartContext = createContext({
   isCartOpen: false,
   setIsOpen: () => {},
   cartItems: [],
   addItemToCart: () => {},
   removeItemFromCart: () => {},
+  deleteItemFromCheckout: () => {},
   cartCount: 0
 })
 
@@ -62,11 +75,16 @@ export const CartProvider = ({ children }) => {
     setCartItems(removeCartItem(cartItems, cartItemToRemove))
   }
 
+  const deleteItemFromCheckout = (checkoutItemToDelete) => {
+    setCartItems(deleteCheckoutItem(cartItems, checkoutItemToDelete))
+  }
+
   const value = {
     isCartOpen,
     setIsCartOpen,
     addItemToCart,
     removeItemFromCart,
+    deleteItemFromCheckout,
     cartItems,
     cartCount
   }
