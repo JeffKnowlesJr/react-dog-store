@@ -20,9 +20,10 @@ import {
   getDoc,
   setDoc,
   collection,
-  writeBatch
+  writeBatch,
+  query,
+  getDocs
 } from 'firebase/firestore'
-import SHOP_DATA from '../../shop-data'
 
 // Initialize Firebase
 initializeApp(firebaseConfig)
@@ -38,7 +39,8 @@ export const db = getFirestore()
 
 export const addCollectionAndDocuments = async (
   collectionKey,
-  objectsToAdd
+  objectsToAdd,
+  field
 ) => {
   const collectionRef = collection(db, collectionKey)
   // A transaction is a word that represents a single unit of work to a database
@@ -46,7 +48,7 @@ export const addCollectionAndDocuments = async (
   const batch = writeBatch(db)
   // Now we need to create the batch
   objectsToAdd.forEach((object) => {
-    const docRef = doc(collectionRef, object.title.toLowerCase())
+    const docRef = doc(collectionRef, object[field].toLowerCase())
     batch.set(docRef, object)
   })
 
@@ -54,13 +56,24 @@ export const addCollectionAndDocuments = async (
   console.log('done')
 }
 
+// Get Categories and Documents fetches products from Firebase and returns our Category Map
+
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, 'categories')
+  const q = query(collectionRef)
+  const querySnapshot = await getDocs(q)
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data()
+    acc[title.toLowerCase()] = items
+    return acc
+  }, {})
+  return categoryMap
+}
+
 export const createUserDocumentFromAuth = async (userAuth, userInfo) => {
   if (!userAuth) return
   const userDocRef = doc(db, 'users', userAuth.uid)
-  console.log(userDocRef)
   const userSnapshot = await getDoc(userDocRef)
-  console.log(userSnapshot)
-  console.log(userSnapshot.exists())
 
   // Check if user data exists
   // If not exists: Create document from userAuth
