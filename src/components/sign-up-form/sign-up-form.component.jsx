@@ -5,7 +5,7 @@ import {
   createUserDocumentFromAuth
 } from '../../utils/firebase/firebase.util'
 import Button from '../button/button.component'
-import './sign-up-form.styles.scss'
+import { SignUpFormContainer, SignUpTitle } from './sign-up-form.styles'
 
 const defaultFormFields = {
   displayName: '',
@@ -26,7 +26,7 @@ const SignUpForm = () => {
     e.preventDefault()
     console.log('Event: \n', e)
     // Confirm that the password matches
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       alert('Passwords do not match')
       return
     }
@@ -36,7 +36,7 @@ const SignUpForm = () => {
 
       resetFormFields()
     } catch (error) {
-      if (error.code == 'auth/email-already-in-use') {
+      if (error.code === 'auth/email-already-in-use') {
         alert('Email already in use')
       }
       console.log('Error in user creation \n', error)
@@ -51,8 +51,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className="sign-up-container">
-      <h2>New Account</h2>
+    <SignUpFormContainer>
+      <SignUpTitle>New Account</SignUpTitle>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -89,7 +89,7 @@ const SignUpForm = () => {
         />
         <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </SignUpFormContainer>
   )
 }
 
