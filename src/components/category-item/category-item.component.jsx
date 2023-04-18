@@ -1,14 +1,15 @@
 import './category-item.styles.scss'
+import { Link } from 'react-router-dom'
 
 const CategoryItem = ({ category }) => {
-  const { title, imageURL } = category
+  const { title, imageUrl } = category
 
   return (
     <div className="category__container">
       <div
         className="category__image"
         style={{
-          backgroundImage: `url(${imageURL})`
+          backgroundImage: `url(${imageUrl})`
         }}
       />
       <div className="category-body__container">

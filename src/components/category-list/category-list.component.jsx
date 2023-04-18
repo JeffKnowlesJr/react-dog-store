@@ -1,6 +1,8 @@
-import categories from './categories.json'
 import './category-list.styles.scss'
 import CategoryItem from '../category-item/category-item.component'
+import { Link } from 'react-router-dom'
+
+import categories from '../../data/categories.data.json'
 
 const CategoryList = () => {
   return (
