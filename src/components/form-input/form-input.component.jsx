@@ -1,22 +1,20 @@
-import './form-input.styles.scss'
+import { FormInputLabel, Input, Group } from './form-input.styles'
 
 const formInput = ({ label, ...otherProps }) => {
   return (
-    <div className="group">
+    <Group>
       {/* Inline If with Logical && Operator */}
-      <input className="form-input" {...otherProps} />
+      <Input {...otherProps} />
       {label && (
-        <label
+        <FormInputLabel
           // if value is more than 0 add class
-          className={`${
-            otherProps.value.length ? 'shrink' : null
-          } form-input-label`}
+          shrink={otherProps.value.length}
           htmlFor={otherProps.name}
         >
           {label}
-        </label>
+        </FormInputLabel>
       )}
-    </div>
+    </Group>
   )
 }
 
