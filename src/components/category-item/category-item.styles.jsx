@@ -43,8 +43,6 @@ export const CategoryContainer = styled.div`
   border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
-.category__container {
-
 
   &:hover {
     cursor: pointer;
@@ -66,4 +64,4 @@ export const CategoryContainer = styled.div`
   &:last-child {
     margin-left: 7.5px;
   }
-  `
+`

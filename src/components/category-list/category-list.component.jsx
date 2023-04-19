@@ -1,15 +1,15 @@
-import { CategoryiesContainer } from './category-list.styles'
+import { CategoriesContainer } from './category-list.styles'
 import CategoryItem from '../category-item/category-item.component'
 
 import categories from '../../data/categories.data.json'
 
 const CategoryList = () => {
   return (
-    <CategoryiesContainer>
+    <CategoriesContainer>
       {categories.map((category) => {
         return <CategoryItem key={category.id} category={category} />
       })}
-    </CategoryiesContainer>
+    </CategoriesContainer>
   )
 }
 
