@@ -35,7 +35,9 @@ const firebaseConfig = {
   appId: process.env.appId
 }
 
-console.log(`firebaseConfig: \n ${firebaseConfig}`)
+console.log(
+  `firebaseConfig: \n apiKey: ${firebaseConfig.apiKey} \n authDomain: ${firebaseConfig.authDomain} \n projectId: ${firebaseConfig.projectId} \n storageBucket: ${firebaseConfig.storageBucket} \n messagingSenderId: ${firebaseConfig.messagingSenderId} \n appId: ${firebaseConfig.appId}`
+)
 
 // Initialize Firebase
 initializeApp(firebaseConfig)
