@@ -35,6 +35,8 @@ const firebaseConfig = {
   appId: process.env.appId
 }
 
+console.log(`firebaseConfig: \n ${firebaseConfig}`)
+
 // Initialize Firebase
 initializeApp(firebaseConfig)
 
