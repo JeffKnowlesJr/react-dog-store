@@ -17,7 +17,8 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) createUserDocumentFromAuth(user)
-      // console.log(user)
+      console.log(`User Context: ${JSON.stringify(user)}`)
+      setCurrentUser(user)
     })
     return unsubscribe
   }, [])
